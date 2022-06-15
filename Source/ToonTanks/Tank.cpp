@@ -15,6 +15,13 @@ ATank::ATank()
 	CameraComp->SetupAttachment(SpringArmComp);
 }
 
+void ATank::BeginPlay()
+{
+	Super::BeginPlay();
+
+	PlayerControllerRef = Cast<APlayerController>(GetController());
+}
+
 // Called to bind functionality to input
 void ATank::SetupPlayerInputComponent(UInputComponent* PlayerInputComponent)
 {
