@@ -51,7 +51,6 @@ void ATank::Tick(float DeltaTime)
 
 void ATank::Move(float Value)
 {
-	UE_LOG(LogTemp, Warning, TEXT("MOVE: %f"), Value);
 	FVector DeltaLocation = FVector::ZeroVector;
 
 	DeltaLocation.X = Value * Speed * UGameplayStatics::GetWorldDeltaSeconds(this);
