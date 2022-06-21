@@ -29,13 +29,15 @@ void ATank::SetupPlayerInputComponent(UInputComponent* PlayerInputComponent)
 
 	PlayerInputComponent->BindAxis(TEXT("MoveForward"), this, &ATank::Move);
 	PlayerInputComponent->BindAxis(TEXT("Turn"), this, &ATank::Turn);
-	PlayerInputComponent->BindAction(TEXT("Fire"), IE_Pressed, this, &ATank::Fire);
+	PlayerInputComponent->BindAction(TEXT("Fire"), IE_Pressed, this, &ATank::HandleFireConditon);
 }
 
 // Called every frame
 void ATank::Tick(float DeltaTime)
 {
 	Super::Tick(DeltaTime);
+
+	Counter += DeltaTime;
 
 	if (TankPlayerController)
 	{
@@ -73,4 +75,13 @@ void ATank::Turn(float Value)
 	DeltaRotation.Yaw = Value * TurnRate * UGameplayStatics::GetWorldDeltaSeconds(this);
 
 	AddActorLocalRotation(DeltaRotation, true);
+}
+
+void ATank::HandleFireConditon()
+{
+	if (Counter >= FireRate)
+	{
+		Counter = 0.f;
+		Fire();
+	}
 }

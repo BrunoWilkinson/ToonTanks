@@ -32,19 +32,18 @@ protected:
 private:
 	UPROPERTY(VisibleAnywhere, Category = "Components")
 	class USpringArmComponent* SpringArmComp;
-
 	UPROPERTY(VisibleAnywhere, Category = "Components")
 	class UCameraComponent* CameraComp;
-
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, meta = (AllowPrivateAccess = "true"), Category = "Movement")
 	float Speed = 250.f;
-
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, meta = (AllowPrivateAccess = "true"), Category = "Movement")
 	float TurnRate = 100.f;
-
-	void Move(float Value);
-
-	void Turn(float Value);
-
+	UPROPERTY(EditAnywhere, Category = "Combat")
+	float FireRate = 1.f;
+	float Counter = 0.f;
+	FTimerHandle FireRateTimerHandle;
 	APlayerController* TankPlayerController;
+	void Move(float Value);
+	void Turn(float Value);
+	void HandleFireConditon();
 };
