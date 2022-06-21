@@ -5,13 +5,20 @@
 
 void AToonTanksPlayerController::SetPlayerEnabledState(bool bPlayerEnabled)
 {
-	if (bPlayerEnabled)
+	if (GetPawn())
 	{
-		GetPawn()->EnableInput(this);
+		if (bPlayerEnabled)
+		{
+			GetPawn()->EnableInput(this);
+		}
+		else
+		{
+			GetPawn()->DisableInput(this);
+		}
+		bShowMouseCursor = bPlayerEnabled;
 	}
-	else
+	else 
 	{
-		GetPawn()->DisableInput(this);
+		UE_LOG(LogTemp, Error, TEXT("Check Player Start Location!"));
 	}
-	bShowMouseCursor = bPlayerEnabled;
 }
