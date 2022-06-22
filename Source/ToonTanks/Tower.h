@@ -24,10 +24,10 @@ protected:
 private:
 	UPROPERTY(EditDefaultsOnly, Category = "Combat")
 	float FireRange = 300.f;
-
 	UPROPERTY(EditDefaultsOnly, Category = "Combat")
-	float FireRate = 2.f;
-
+	float FireRateMin = 2.f;
+	UPROPERTY(EditDefaultsOnly, Category = "Combat")
+	float FireRateMax = 3.f;
 	FTimerHandle FireRateTimerHandle;
 	void CheckFireCondition();
 	bool InFireRange();

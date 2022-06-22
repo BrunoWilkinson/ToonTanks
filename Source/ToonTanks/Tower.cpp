@@ -6,13 +6,14 @@
 #include "Kismet/GameplayStatics.h"
 #include "TimerManager.h"
 
+
 void ATower::BeginPlay()
 {
 	Super::BeginPlay();
 
 	Tank = Cast<ATank>(UGameplayStatics::GetPlayerPawn(this, 0));
 
-	GetWorldTimerManager().SetTimer(FireRateTimerHandle, this, &ATower::CheckFireCondition, FireRate, true);
+	GetWorldTimerManager().SetTimer(FireRateTimerHandle, this, &ATower::CheckFireCondition, FMath::RandRange(FireRateMin, FireRateMax), true);
 }
 
 void ATower::Tick(float DeltaTime)
