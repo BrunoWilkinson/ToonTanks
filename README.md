@@ -15,6 +15,6 @@ Aim with mouse
 
 itch.io:
 
-https://brunowilkinson.itch.io
+https://brunowilkinson.itch.io/toontanks
 
 v1.0.0
