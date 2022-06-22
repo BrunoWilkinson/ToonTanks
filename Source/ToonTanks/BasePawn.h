@@ -18,12 +18,8 @@ public:
 	void HandleDestruction();
 
 protected:
-	void RotateTurret(FVector LookAtTarget);
-	void Fire();
-
-private:
-	UPROPERTY(VisibleAnyWhere, BluePrintReadOnly, meta = (AllowPrivateAccess = "true"), Category = "Components")
-	class UCapsuleComponent* CapsuleComp;
+	virtual void RotateTurret(FVector LookAtTarget);
+	virtual void Fire();
 	UPROPERTY(VisibleAnyWhere, BluePrintReadWrite, meta = (AllowPrivateAccess = "true"), Category = "Components")
 	UStaticMeshComponent* BaseMesh;
 	UPROPERTY(VisibleAnyWhere, BluePrintReadWrite, meta = (AllowPrivateAccess = "true"), Category = "Components")
@@ -32,6 +28,10 @@ private:
 	USceneComponent* ProjectileSpawnPoint;
 	UPROPERTY(EditDefaultsOnly, Category = "Combat")
 	TSubclassOf<class AProjectile> ProjectileClass;
+
+private:
+	UPROPERTY(VisibleAnyWhere, BluePrintReadOnly, meta = (AllowPrivateAccess = "true"), Category = "Components")
+	class UCapsuleComponent* CapsuleComp;
 	UPROPERTY(EditAnywhere, Category = "Combat")
 	class UParticleSystem* DeathParticles;
 	UPROPERTY(EditAnywhere, Category = "Combat")
